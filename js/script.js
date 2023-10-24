@@ -32,11 +32,21 @@ let teamMembers = [
     }
   ];
   
-  // Stampare le informazioni su console
+  let teamInfoElement = document.getElementById("team-info");
+
+  // Creare e aggiungere le informazioni dei membri del team al DOM
   for (let i = 0; i < teamMembers.length; i++) {
-    console.log("Name: " + teamMembers[i].name);
-    console.log("Role: " + teamMembers[i].role);
-    console.log("Foto: " + teamMembers[i].foto);
-    console.log(""); // Aggiunge una riga vuota per separare le informazioni dei membri del team
+      let memberInfo = document.createElement("div");
+      memberInfo.innerHTML = "Name: " + teamMembers[i].name + "<br>" +
+                            "Role: " + teamMembers[i].role + "<br>";
+
+      let fotoElement = document.createElement("img");
+      fotoElement.src = teamMembers[i].foto;
+      fotoElement.alt = teamMembers[i].name + " - Foto";
+      
+      memberInfo.appendChild(fotoElement);
+      teamInfoElement.appendChild(memberInfo);
+
+      let separator = document.createElement("hr");
+      teamInfoElement.appendChild(separator);
   }
-  
